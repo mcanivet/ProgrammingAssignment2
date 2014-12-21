@@ -52,7 +52,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ##          2.1- The function returns the following message "getting cached data"
 ##          2.2- As well as the value of M called via $getinverse() function
 
-cacheSolve <- function(x) {
+cacheSolve <- function(x, ...) {
       
       ## The below captures the cached value of the inverse
       M <- x$getinverse()
@@ -65,8 +65,8 @@ cacheSolve <- function(x) {
       
       ## If the IF condition has not been executed, the function continues
       
-      MyMatrix <- x$get()     ## Captures the initial matrix and stores it under the variable MyMatrix
-      M <- solve(MyMatrix)    ## Executes the solve function to calculate the inverse, then stores it under M
-      x$setinverse(M)         ## Pushes the value of the inverse matrix M to the cache
-      M                       ## And displays the value of the updated inverse matrix
+      MyMatrix <- x$get()           ## Captures the initial matrix and stores it under the variable MyMatrix
+      M <- solve(MyMatrix, ...)     ## Executes the solve function to calculate the inverse, then stores it under M
+      x$setinverse(M)               ## Pushes the value of the inverse matrix M to the cache
+      M                             ## And displays the value of the updated inverse matrix
 }
